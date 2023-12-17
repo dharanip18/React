@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 const heading = React.createElement(
   //React.createElement - creates js object not an element - render will convert object to element
@@ -21,20 +21,57 @@ const heading = React.createElement(
  * </div>
  */
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Im an H1 tag from React"),
-    React.createElement("h2", {}, "Im an H2 tag from React"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "Im an H1 tag"),
-    React.createElement("h2", {}, "Im an H2 tag"),
-  ]),
-]);
+// const parent = React.createElement("div", { id: "parent" }, [
+//   React.createElement("div", { id: "child" }, [
+//     React.createElement("h1", {}, "Im an H1 tag from React"),
+//     React.createElement("h2", {}, "Im an H2 tag from React"),
+//   ]),
+//   React.createElement("div", { id: "child2" }, [
+//     React.createElement("h1", {}, "Im an H1 tag"),
+//     React.createElement("h2", {}, "Im an H2 tag"),
+//   ]),
+// ]);
 
 //The above structure looks ugly that whys jsx came into picture
 
-console.log("Heading", parent); //object
+//console.log("Heading", parent); //object
+
+// JSX - is not HTML inside JS
+//     - Looks HTML/XML Like syntax
+const jsxHeading = (
+  <h1 className="heading" tabIndex="5" id="mainHeading">
+    This is from JSX
+  </h1>
+);
+console.log(jsxHeading);
+
+// React Components - 2.Functional Component - always start with CaptialLetter - function returning ReactElement / JSX is functional component
+
+//component with return
+const Title = () => {
+  return <h2>2. React Functional Component</h2>;
+};
+
+const title = <h2>Types of cmponent</h2>;
+//component without return
+//component composition - Composing two components within one another
+const number = 2;
+const Header = () => (
+  <div id="container">
+    <h1 className="heading">React</h1>
+    {title}
+    {/* {} - run any js code  */}
+    {number}
+    <Title></Title>
+    <Title />
+    {Title()}
+  </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent); // render - responsible for converting objects into html tags
+
+// render ReactElement
+//root.render(jsxHeading); // render - responsible for converting objects into html tags
+
+// render Component
+root.render(<Header />);

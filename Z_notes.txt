@@ -120,3 +120,64 @@ Prod build
 build failed? remove main from package.json
 
 browserList in package.json supports the specific browsers
+
+Session3
+--------
+
+Instead of npx parcel index.html - we can create a script to start/run the dev project
+  "scripts": {
+    "start":"parcel index.html", // for dev 
+    "build":"parcel build index.html", //for prod
+  }
+ run the script - npm run [name of script]
+ > npm run start or npm start (means calling npm run start(means npx parcel index.html))
+ > npm run build not (npm build)
+
+ Fundamentals of React
+
+ React Elements
+ creating nested react elements with React.createElement is difficult for developers - here comes JSX into picture
+
+ JSX -Is not a HTML inside JS 
+     -HTML/XML Like syntax
+
+const jsxHeading = <h1 id="heading">This is from JSX</h1>;
+
+This is not a valid JS. JSEngine will not understand the above code. Parcel is doing the transpilation before it reaches to the JSEngine.
+Babel is doing transpilation. Parcel manages babel
+
+JSEngine will understand only Ecma script
+
+JSX(transpiled before it reaches the JS) - Parcel - Babel
+
+React.createElement => ReactElement -JS Object => HTMLElement(render)
+JSX => React.createElement => ReactElement -JS Object => HTMLElement(render)
+
+React Components
+    -Class Based Component(old way)
+    -Functional Component (new way)
+        Functional Component - always start with CaptialLetter - function returning ReactElement / JSX is functional component
+
+        const Fn = () = true;
+       
+        const Fn1 = () => {
+            return true;
+        }
+
+        const element = (
+            <span>This is React Element</span>
+        )
+
+        const element = (
+            <div id="container">
+            {element}
+            </div>
+        )
+
+cross site scripting - attacker sends some malicious data -jsx will take care
+
+ {} - run any js code  
+    {number}
+    <Title></Title>
+    <Title />
+    {Title()}
