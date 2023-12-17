@@ -181,3 +181,99 @@ cross site scripting - attacker sends some malicious data -jsx will take care
     <Title></Title>
     <Title />
     {Title()}
+
+
+Session4
+--------
+Food Ordering APP 
+
+const RestaurantCard = () = {
+    return(
+        <div className="res-card">
+        <img src="" />
+        <h3>ResName</h3>
+        <h4>Cusines</h4>
+        <h4>rating</h4>
+        <h4>distance</h4>
+        </div>
+    )
+}
+
+const Restaurant = () =>{
+    return(
+        <div className="res-con">
+            <RestaurantCard/>
+            <RestaurantCard/>
+            <RestaurantCard/>
+        </div>
+    )
+}
+
+root.render(<Restaurant />)
+
+pass Dynamic data
+----------------
+
+const Restaurant = () =>{
+    return(
+        <div className="res-con">
+            <RestaurantCard name="Ibacco" cusines="IceCream, Shakes"/>
+            <RestaurantCard name="FB Cakes" cusines="Cake, Brownie"/>
+            <RestaurantCard name="Juice Cart" cusines="Fresh Juice, Malts, Cool Drinks"/>
+        </div>
+    )
+}
+
+//default way
+const RestaurantCard = (props) = {
+    return(
+        <div className="res-card">
+        <img src="" />
+        <h3>{props.name}</h3>
+        <h4>{props.cusines}</h4>
+        <h4>rating</h4>
+        <h4>distance</h4>
+        </div>
+    )
+}
+
+//object destructing
+const RestaurantCard = (props) = {
+    const {name,cusines} = props;
+    return(
+        <div className="res-card">
+        <img src="" />
+        <h3>{name}</h3>
+        <h4>{cusines}</h4>
+        <h4>rating</h4>
+        <h4>distance</h4>
+        </div>
+    )
+}
+
+//destructing on fly
+const RestaurantCard = ({name,cusines}) = {
+    return(
+        <div className="res-card">
+        <img src="" />
+        <h3>{name}</h3>
+        <h4>{cusines}</h4>
+        <h4>rating</h4>
+        <h4>distance</h4>
+        </div>
+    )
+}
+root.render(<Restaurant />)
+
+Config driven UI
+----------------
+UI is based on configuration
+Open Swiggy - Im in chennai - I see the Offers carousel
+what if Im in bangalore,mumbai,pune?
+I will see different offers based on locations or there were no offers at all
+The UI is driven by configuration of data
+
+
+Key - every component must have key for unique idenfication but that should be indexes
+
+no key(not acceptable) <<<<<<< index as key <<<<<<< unique key(best Practice)
