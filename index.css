@@ -1,0 +1,10 @@
+*{
+    padding:0;
+    margin:0;
+}
+#mainHeading{
+ max-width:800px;
+ margin:40px auto;
+ color:#006f60;
+ text-align: center;
+}
