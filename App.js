@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 const heading = React.createElement(
   //React.createElement - creates js object not an element - render will convert object to element
   "h1",
@@ -20,8 +23,8 @@ const heading = React.createElement(
 
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Im an H1 tag"),
-    React.createElement("h2", {}, "Im an H2 tag"),
+    React.createElement("h1", {}, "Im an H1 tag from React"),
+    React.createElement("h2", {}, "Im an H2 tag from React"),
   ]),
   React.createElement("div", { id: "child2" }, [
     React.createElement("h1", {}, "Im an H1 tag"),

@@ -4,3 +4,119 @@ Simple Hello World! from HTML
 simple Hello World! from JS
 simple Hello World! from React
 See Z_index-hello.html
+
+Session2
+--------
+Igniting the APP
+React Production ready APP
+Lot of other packages make our react app fast
+npm - no full form - manages packages - not stands for node package manager
+ 
+> npm init 
+
+            package name: (myreact)
+            version: (1.0.0)
+            description: This is MY React learnings.
+            entry point: (App.js)
+            test command: jest
+            git repository: (https://github.com/dharanip18/React.git)
+            keywords: react , dharani, myreact
+            author: Dharani
+            license: (ISC)
+            About to write to E:\PREP\React\MyReact\package.json:
+
+            {
+            "name": "myreact",
+            "version": "1.0.0",
+            "description": "This is MY React learnings.",
+            "main": "App.js",
+            "scripts": {
+                "test": "jest"
+            },
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/dharanip18/React.git"
+            },
+            "keywords": [
+                "react",
+                "dharani",
+                "myreact"
+                ],
+            "author": "Dharani",
+            "license": "ISC",
+            "bugs": {
+                "url": "https://github.com/dharanip18/React/issues"
+            },
+            "homepage": "https://github.com/dharanip18/React#readme"
+            }
+
+package.json file is created.
+    -It is the configuration for npm
+    -This is also known as dependencies
+
+Install dependencies
+  Bundler - our whole code needs to be 
+                bundled,
+                minified,
+                cached,
+                cleaned
+ webpack,parcel,etc
+
+
+> npm install -D parcel
+ -D dev dependencies
+ other normal dependencies
+
+ ~ and ^ package name 
+ 2.8.3 - 2.8.4 ^ minor update
+ 2.8.3 - 3.0.0 ~ major update
+
+package.json - it is the configuration for npm - it keeps track of what version of package is installed in your system
+package-lock.json - keeps track of exact version that being installed
+
+integrity - hash
+
+node_modules - we shouldn't push to github/Production - put it inside .gitignore
+
+we must push both package.json and package-lock.json - it will generate the node_modules 
+
+ignite our app 
+--------------
+> npx parcel index.html
+
+npx packagename 
+npx - execute a package
+
+install react as normal dependency
+> npm i react
+> npm i react-dom
+
+Now remove cdn and import react and react-dom
+getting error? that is because js is treating as normal js not a node_modules specify type="module" will resolve
+
+#parcel uses other libraries for doing minification,img optimization
+create a Dev build
+         Local server
+         automatically refreshing the page - HMR - Hot module replacement
+         uses file watching algorithm - written in cpp
+         Caching - Faster builds - .parcel-cache
+         Image Optimization
+         Minification
+         Bundling
+         Compress
+         Consistent Hashing - It keeps track of all code
+         Code spliting
+         Differential Bundling - App opens in IE,Chrome, Mobile browsers, Older browsers
+         Diagnostic
+         Error Handling
+         https
+         Tree shaking - remove unused code
+         Different dev and prod bundler
+Goto Parcel documentation
+
+
+Prod build
+> npx parcel build index.html 
+build failed? remove main from package.json
+
+browserList in package.json supports the specific browsers
