@@ -77,3 +77,13 @@ li{
     align-items: center;
     margin-bottom: 16px;
 }
+.filter{
+    margin:20px 0;
+}
+button{
+    background: transparent;
+}
+.filter-btn{
+    border-radius: 25px;
+    padding:16px;
+}

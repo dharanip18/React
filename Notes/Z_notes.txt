@@ -277,3 +277,34 @@ The UI is driven by configuration of data
 Key - every component must have key for unique idenfication but that should be indexes
 
 no key(not acceptable) <<<<<<< index as key <<<<<<< unique key(best Practice)
+
+Session5
+--------
+
+Two types of Export/Import
+-------------------------
+   1. Default Export/Import
+        export default Component;
+        import Component from "path";
+   2. Named Export/Import 
+        export const Component;
+        import {Component} from "path";
+
+React HOOKS (Normal JS utility function)
+-----------
+    -useState() - super powerful state variables in react
+    -useEffect() -
+
+Normal JS variable
+let List=[];
+List=["ab"];
+
+state variable
+const[resList,setResList] = useState([
+    {},{},{}
+])
+
+
+Reconciliation algorithm(React fiber)
+
+whenever state variable changes/updated react rerender the component

@@ -1,5 +1,0 @@
-what is CDN?
-What is crossorigin script attribute?
-React.createElement?
-React.createDOM?
-render?
