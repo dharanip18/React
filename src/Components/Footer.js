@@ -1,8 +1,12 @@
+import { LOGO_IMG } from "../utils/constants";
 const Footer = () => {
   return (
-    <div className="container">
-      <h1>Footer</h1>
-    </div>
+    <footer className="footer">
+      <div className="container">
+        <img className="logo" src={LOGO_IMG} />
+        <p>© 2023 Food for Hunger</p>
+      </div>
+    </footer>
   );
 };
 

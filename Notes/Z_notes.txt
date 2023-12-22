@@ -307,4 +307,40 @@ const[resList,setResList] = useState([
 
 Reconciliation algorithm(React fiber)
 
-whenever state variable changes/updated react rerender the component
+whenever state variable changes/updated react rerender(call the component again) the component
+
+Session6
+--------
+Monolithic and microservices
+
+all UI,BE, DB, AUTH, NOTI are into single project - even if there is any small ui change - we have to deploy entire project
+
+have seperate services/project for UI,BE,DB, AUTH, NOTI - only service change can be deployed
+
+Real data LIve API
+                            (500ms)
+1. AS Soon As Page loads -> Make API call -> wait for data to come and Render on UI
+2. AS Soon As Page loads -> Render the UI -> Make API call -> As soon as we get data rerender the UI 
+
+we always use 2nd approach in react -better approach and better ux
+
+useEffect HOOKS-- 
+hook is normal js function which react gives us it has its own use case were we use this fn.
+
+useEffect(()=>{},[]);
+()=>{} - call back fn
+[] - dependency array
+Body component rendered and call back in useEffect is called
+
+CORS - one origin to other origin blocks - allow cros extension to resolve error
+
+useEffect(()=>{
+    fetchData();
+},[])
+
+const fetchData = async () =>{
+    const data = await fetch(apiURL)
+    const json = await data.json();
+
+    console.log(json)
+}
