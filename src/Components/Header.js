@@ -1,17 +1,35 @@
+import { render } from "react-dom";
 import { LOGO_IMG } from "../utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loginBtnText, setLoginBtnText] = useState("Login");
 
+  // if no dependancy array => useEffect is called on every render
+  // if dependancy array is empty = [] => useEffect is called on initial render(just once)
+  // if dependancy array is [loginBtnText] => called everytime [loginBtnText] is updated
+  useEffect(() => {
+    console.log("useEffect called");
+  }, [loginBtnText]);
+
   return (
     <header>
       <div className="container">
-        <img className="logo" src={LOGO_IMG} />
+        <div>
+          <Link to="/">
+            <img className="logo" src={LOGO_IMG} />
+          </Link>
+        </div>
 
         <ul className="nav-items">
-          <li>About</li>
-          <li>Contact US</li>
+          <li>
+            <Link to="About">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact US</Link>
+          </li>
           <li>Cart</li>
           <button
             className="login"

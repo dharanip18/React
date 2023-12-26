@@ -7,6 +7,7 @@ import {
   BEN_KORA_API,
   BEN_KORA_RESDATA,
 } from "../utils/constants";
+import { Link } from "react-router-dom";
 // import resList from "../utils/mockData";
 
 const Body = () => {
@@ -84,7 +85,13 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredListOfRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            className="res-card-link"
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

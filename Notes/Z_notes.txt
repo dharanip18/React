@@ -344,3 +344,69 @@ const fetchData = async () =>{
 
     console.log(json)
 }
+
+
+Session7
+--------
+useEffect 
+
+if no dependancy array - useEffect is called every render
+if dependancy array is empty [] - useEffect is called on initial render and just once.
+if we have any dependancy array is [btnNameReact] -  is called every time btnNameReact is updated 
+
+useState
+
+never create useState outside of component
+it is used for creating local state variable inside your functional component
+call useState on the top
+never create useState inside if/else condition - creates inconsist, for ,function
+
+
+Routing
+
+npm i react-router-dom 
+
+configuration for router - createBrowserRouter
+
+create About,contact,Error Page
+create configuration - createBrowserRouter
+Provider configuration to router - RouterProvider
+use useRouteError and show error , Outlet, Link from react-router-dom
+
+children routes
+
+Outlet - component - whenever change in the path the outlet will be filled with children according to path
+
+navigate to the other page without reloading the whole page - <Link to=""></Link>(will not reload whole page) - like ahref(will reload)
+
+2 types of routing in web applications
+    client side routing - Load the App for first time it already has the code component - when called it just load that component - does not make any network call - single page application via client side routing
+    server side routing - ahref - index,about,contact html -> index-about - makes the network call -  gets the data from the network about - render the UI - refreshes the whole page
+
+dynamic route for every Restaurant - restaurant/Restaurantname
+
+{path:"/restaurant/:resId"} - :resId - dynamic routes
+
+
+
+useParam hooks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shortcut
+rafce - create functional component
+
+
+

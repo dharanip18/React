@@ -14,3 +14,6 @@ export const CHE_EGAT_API =
 
 export const CHE_EGAT_RESDATA =
   "?.data?.success?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants";
+
+export const MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.8377638&lng=80.23195489999999&restaurantId=";
