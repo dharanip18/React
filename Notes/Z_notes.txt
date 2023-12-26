@@ -392,11 +392,51 @@ dynamic route for every Restaurant - restaurant/Restaurantname
 useParam hooks
 
 
+Session8
+--------
+Functional Component - Functional Component is normal js function that return peice of jsx
+Class based Components - is a normal js class which extends React.Component and the render method that returns peice of jsx
+  React.Component is class which is given by React - have to import from react
+  import React from "react";
+  class ComponentName extends React.Component
 
+  import {Component} from "react";
+  class ComponentName extends Component  
 
+  How to receive props from class based component
+  create a 
+  constructor(props){
+    super(props);
+  }  - constructor receives the props
 
+  always use this keyword in class
+  whenever the instance of class is created constructor is called and props is extracted and we can use this props
 
+ Class based component is called instace of object is created and first constructor is called and then render is called
 
+ ComponentDidMount  - API calls are made
+-Parentconstructor
+-ParentRender
+    
+    -ChildConstructor
+    -ChildRender
+    
+    -Child2Constructor
+    -Child2Render
+    
+    -ChildComponentDidMount
+    -Child2ComponentDidMount
+
+-ParentComponentDidMount
+
+useEffect(()=>{
+    console.log("useEffect)"
+
+//unmounting
+    return()=>{
+        console.log("useEffect return)
+    }
+},[])
 
 
 
