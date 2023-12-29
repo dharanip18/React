@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { MENU_API } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { MENU_IMG } from "../utils/constants";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(MENU_API + resId);
-    const json = await data.json();
-    console.log(json);
-    setResInfo(json.data);
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -50,12 +39,42 @@ const RestaurantMenu = () => {
       <div className="row">
         <p>{costForTwoMessage}</p>
       </div>
-      <div className="row">
-        <h2>Menus</h2>
-
-        {itemCards.map((item) => {
-          <div>{item}</div>;
-        })}
+      <div
+        className="row"
+        style={{ display: "block", borderTop: "1px solid #ddd" }}
+      >
+        {/* <button
+          className="accordion-header"
+          onClick={() => {
+            if (
+              this.nextElementSibling.getAttribute("aria-hidden") == "false"
+            ) {
+              this.nextElementSibling.setAttribute("aria-hidden", "true");
+              this.nextElementSibling.style.display = "none";
+            } else {
+              this.nextElementSibling.setAttribute("aria-hidden", "false");
+              this.nextElementSibling.style.display = "block";
+            }
+          }}
+        > */}
+        <h2>Recommended ({itemCards.length})</h2>
+        {/* </button> */}
+        <ul aria-hidden="false">
+          {itemCards.map((item) => (
+            // console.log(item.card.info)
+            <li className="accordion-body">
+              <div>
+                <h4>{item.card.info.name} </h4>
+                <p className="rupees">{item.card.info.price / 100}</p>
+                <p>{item.card.info.description}</p>
+              </div>
+              <img
+                className="menu-img"
+                src={MENU_IMG + item.card.info.imageId}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

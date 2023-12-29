@@ -439,6 +439,21 @@ useEffect(()=>{
 },[])
 
 
+Session9
+--------
+
+Custom Hooks
+
+Single responsibility principle
+
+/**
+ * Chunking
+ * Code spliting
+ * Lazy loading
+ * Dynaamic bundling
+ * On demand loading
+ * Dynamic import
+ */
 
 
 

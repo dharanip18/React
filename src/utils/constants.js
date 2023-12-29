@@ -17,3 +17,6 @@ export const CHE_EGAT_RESDATA =
 
 export const MENU_API =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.8377638&lng=80.23195489999999&restaurantId=";
+
+export const MENU_IMG =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";

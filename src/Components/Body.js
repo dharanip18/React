@@ -8,6 +8,7 @@ import {
   BEN_KORA_RESDATA,
 } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // import resList from "../utils/mockData";
 
 const Body = () => {
@@ -40,6 +41,16 @@ const Body = () => {
         ?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return (
+      <div className="row">
+        <h1>Looks you are offile. Please check your internet connection!</h1>
+      </div>
+    );
+  }
 
   //conditional rendering
   if (listOfRestaurant.length === 0) {
