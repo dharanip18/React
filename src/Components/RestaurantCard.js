@@ -12,12 +12,15 @@ const RestaurantCard = (props) => {
     sla: { deliveryTime },
   } = resData?.info;
   return (
-    <div className="res-card">
-      <img src={RES_IMG_URL + cloudinaryImageId} />
-      <div className="res-content">
-        <h3 className="single-line">{name}</h3>
-        <div className="row">
-          <h4>
+    <div className="res-card rounded-md shadow-md hover:shadow-2xl p-5">
+      <img
+        className="h-32 w-full rounded-sm object-cover"
+        src={RES_IMG_URL + cloudinaryImageId}
+      />
+      <div className="res-content mt-5">
+        <h3 className="single-line line-clamp-1 font-bold mb-2">{name}</h3>
+        <div className="row flex mb-2 gap-x-2">
+          <h4 className="flex items-center gap-x-1">
             <svg
               width="20"
               height="20"
@@ -52,11 +55,22 @@ const RestaurantCard = (props) => {
           <span> • </span>
           <h4>{deliveryTime} mins</h4>
         </div>
-        <h4 className="single-line">{cuisines.join(", ")}</h4>
+        <h4 className="single-line line-clamp-1 mb-2">{cuisines.join(", ")}</h4>
         <h4> {costForTwo}</h4>
       </div>
     </div>
   );
+};
+
+export const promotedRestaurantCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute">Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

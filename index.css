@@ -1,4 +1,9 @@
-*{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* *{
     padding:0;
     margin:0;
     font-family: Alata;
@@ -11,7 +16,6 @@
 header{
     height:80px;
     box-shadow: 0 2px 4px 0 rgba(0, 56, 48, 0.12);
-    /* position: fixed; */
     z-index: 4;
     top:0;
     width:100%;
@@ -57,7 +61,6 @@ li{
     column-gap: 40px;
 }
 .res-card{
-    /* width:19.22%; */
     width:100%;
     border-radius:12px;
     box-shadow: 0 6px 20px rgba(0,56,48,.12);
@@ -146,7 +149,6 @@ button{
     animation-name: shimmer;
     animation-timing-function: linear;
     background: rgb(191, 198, 124);
-    /* background: linear-gradient(to right, #c1dceb 4%, #a3cbe1 25%, #c1dceb 36%); */
     background: (to right, #8bc34a94 4%, rgb(172 185 65 / 71%) 25%, #8bc34a94 36%) 0 0 / 1200px 100%;
     background-size: 1200px 100%;
 }
@@ -254,4 +256,4 @@ button{
 .res-info li p{
     font-size: 14px;
     line-height: 1.5;
-}
+} */

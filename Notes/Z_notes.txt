@@ -455,9 +455,23 @@ Single responsibility principle
  * Dynamic import
  */
 
+ Session10
+ ---------
+ Styled Components
+ material UI
+ Bootstrap
+ Chakra UI
+ tailwind css
+
+ tailwind with parcel
+npm install -D tailwindcss postcss
+npx tailwindcss init
 
 
 
+Session11
+--------
+Higher Order functions
 
 
 shortcut

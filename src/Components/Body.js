@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { promotedRestaurantCard } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import {
@@ -17,7 +17,7 @@ const Body = () => {
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-
+  const RestaurantCardPromoted = promotedRestaurantCard(RestaurantCard);
   //this callback will be called once component rendered
   useEffect(() => {
     fetchData();
@@ -57,10 +57,11 @@ const Body = () => {
     return <Shimmer />;
   }
   return (
-    <div className="container main">
-      <div className="btn-container row">
-        <div className="search-box">
+    <div className="container main max-w-7xl mx-auto my-10">
+      <div className="btn-container row flex gap-x-4 mb-8">
+        <div className="search-box rounded-xl border border-black">
           <input
+            className="focus:outline-none px-2"
             type="text"
             value={searchText}
             onChange={(e) => {
@@ -68,7 +69,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="search-btn h-full rounded-r-xl px-3 bg-lime-500 text-white"
             onClick={() => {
               console.log("ST", searchText);
               const filteredRestaurant = listOfRestaurant.filter((res) =>
@@ -82,7 +83,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="filter-btn rounded-xl border-black border p-2"
           onClick={() => {
             const filterListAvgRating = listOfRestaurant.filter(
               (res) => res.info.avgRating > 4.3
@@ -94,14 +95,18 @@ const Body = () => {
           Top Rated Restaurant
         </button>
       </div>
-      <div className="res-container">
+      <div className="res-container flex max-w-7xl mx-auto justify-between flex-wrap gap-y-10">
         {filteredListOfRestaurant.map((restaurant) => (
           <Link
-            className="res-card-link"
+            className="res-card-link w-56"
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.aggregatedDiscountInfoV2 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

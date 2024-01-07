@@ -2,10 +2,14 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { MENU_IMG } from "../utils/constants";
+import RestaurantMenuCategory from "./RestaurantMenuCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(null);
+  const [check, setCheck] = useState(false);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -23,58 +27,43 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
 
+  const categories =
+    resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+      (c) =>
+        c.card?.["card"]?.["@type"] ==
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  // console.log(categories);
+
   return (
-    <div className="container res-info">
-      <div className="row">
+    <div className="container res-info max-w-5xl mx-auto my-16">
+      <div className="row flex justify-between w-10/12 mx-auto mb-3">
         <div className="col">
-          <h1>{name}</h1>
-          <p>{areaName}</p>
-          <p>{feeDetails.message}</p>
+          <h1 className="mb-2 font-bold">{name}</h1>
+          <p className="mb-2">{areaName}</p>
+          <p className="mb-2">{feeDetails.message}</p>
         </div>
         <div className="col">
-          <p>{avgRating}</p>
-          <p>{totalRatingsString}</p>
+          <p className="mb-2">{avgRating}</p>
+          <p className="mb-2">{totalRatingsString}</p>
         </div>
       </div>
-      <div className="row">
+      <div className="row flex justify-between w-10/12 mx-auto">
         <p>{costForTwoMessage}</p>
       </div>
-      <div
-        className="row"
-        style={{ display: "block", borderTop: "1px solid #ddd" }}
-      >
-        {/* <button
-          className="accordion-header"
-          onClick={() => {
-            if (
-              this.nextElementSibling.getAttribute("aria-hidden") == "false"
-            ) {
-              this.nextElementSibling.setAttribute("aria-hidden", "true");
-              this.nextElementSibling.style.display = "none";
-            } else {
-              this.nextElementSibling.setAttribute("aria-hidden", "false");
-              this.nextElementSibling.style.display = "block";
-            }
-          }}
-        > */}
-        <h2>Recommended ({itemCards.length})</h2>
-        {/* </button> */}
-        <ul aria-hidden="false">
-          {itemCards.map((item) => (
-            // console.log(item.card.info)
-            <li className="accordion-body">
-              <div>
-                <h4>{item.card.info.name} </h4>
-                <p className="rupees">{item.card.info.price / 100}</p>
-                <p>{item.card.info.description}</p>
-              </div>
-              <img
-                className="menu-img"
-                src={MENU_IMG + item.card.info.imageId}
-              />
-            </li>
-          ))}
-        </ul>
+      <div className="mt-6 border-t-2">
+        {categories.map((category, index) => (
+          <RestaurantMenuCategory
+            key={category?.card?.card.title}
+            data={category?.card?.card}
+            showItems={index == showIndex && check}
+            setShowIndex={() => {
+              setShowIndex(index);
+              setCheck((value) => !value);
+              console.log("i", index, showIndex);
+            }}
+          />
+        ))}
       </div>
     </div>
   );
